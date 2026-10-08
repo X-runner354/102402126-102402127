@@ -18,7 +18,7 @@
 ├── test/
 │   └── core.test.js    # Jest 单元测试（21 个用例）
 ├── docs/
-│   └── images/         # 数据流图 / 业务流程图（用于博客展示）
+│   └── images/         # 数据流图、业务流程图及界面截图（用于博客展示）
 ├── package.json        # 项目描述与 Jest 测试脚本
 ├── CONTRIBUTING.md     # 提交规范与协作流程
 └── README.md           # 本文档
