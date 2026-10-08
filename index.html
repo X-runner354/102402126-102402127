@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校园失物招领</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" data-nav="home">
+        <span class="brand-icon">🔍</span>
+        <span class="brand-name">校园失物招领</span>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-nav="home">首页</button>
+        <button class="nav-btn" data-nav="publish">发布信息</button>
+        <button class="nav-btn" data-nav="mine">我的发布</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="view-home" class="view">
+      <div class="hero">
+        <h1>让失物回家，让善意传递</h1>
+        <p>集中浏览校园失物与招领信息，快速搜索，一键联系发布者。</p>
+      </div>
+
+      <div class="panel filter-panel">
+        <div class="search-row">
+          <input id="search-input" type="text" placeholder="输入物品名称 / 地点 / 描述关键词搜索…">
+          <button id="search-btn" class="btn btn-primary">搜索</button>
+        </div>
+        <div class="filter-row">
+          <div class="type-tabs">
+            <button class="type-tab active" data-type="">全部</button>
+            <button class="type-tab" data-type="lost">寻物</button>
+            <button class="type-tab" data-type="found">招领</button>
+          </div>
+          <select id="filter-category">
+            <option value="">全部类别</option>
+          </select>
+          <select id="filter-location">
+            <option value="">全部地点</option>
+          </select>
+          <select id="filter-status">
+            <option value="">全部状态</option>
+            <option value="open">进行中</option>
+            <option value="resolved">已解决</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="item-list" class="item-list"></div>
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">🈳</div>
+        <p>暂无匹配的信息，换个关键词或筛选条件试试吧。</p>
+      </div>
+    </section>
+
+    <section id="view-publish" class="view hidden">
+      <div class="panel form-panel">
+        <h2>发布信息</h2>
+        <form id="publish-form">
+          <div class="form-group">
+            <label>信息类型 <span class="required">*</span></label>
+            <div class="radio-row">
+              <label class="radio-item"><input type="radio" name="type" value="lost" checked><span>寻物</span></label>
+              <label class="radio-item"><input type="radio" name="type" value="found"><span>招领</span></label>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>物品名称 <span class="required">*</span></label>
+              <input type="text" id="f-itemName" placeholder="如：校园卡 / 钥匙 / 雨伞">
+            </div>
+            <div class="form-group">
+              <label>物品类别 <span class="required">*</span></label>
+              <select id="f-category"></select>
+            </div>
+            <div class="form-group">
+              <label>地点 <span class="required">*</span></label>
+              <select id="f-location"></select>
+            </div>
+            <div class="form-group">
+              <label>时间</label>
+              <input type="date" id="f-itemDate">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>详细描述</label>
+            <textarea id="f-description" rows="3" placeholder="物品特征、颜色、遗失经过等细节…"></textarea>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>联系方式 <span class="required">*</span></label>
+              <input type="text" id="f-contact" placeholder="手机号 / QQ / 微信">
+            </div>
+            <div class="form-group">
+              <label>发布者 <span class="required">*</span></label>
+              <input type="text" id="f-publisher" placeholder="你的姓名">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">发布</button>
+            <button type="reset" class="btn btn-ghost">重置</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="view-mine" class="view hidden">
+      <div class="panel mine-panel">
+        <h2>我的发布</h2>
+        <p class="mine-hint">请先确认你的姓名，系统将筛选出你发布过的信息。</p>
+        <div class="search-row">
+          <input id="mine-publisher" type="text" placeholder="输入发布者姓名筛选">
+          <button id="mine-filter-btn" class="btn btn-primary">查询</button>
+        </div>
+      </div>
+      <div id="mine-list" class="item-list"></div>
+      <div id="mine-empty" class="empty-state hidden">
+        <div class="empty-icon">📭</div>
+        <p>该姓名下还没有发布记录。</p>
+      </div>
+    </section>
+
+    <section id="view-detail" class="view hidden">
+      <div id="detail-content"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <footer class="footer">
+    <p>校园失物招领 · 结对作业 · 102402126 黄炜杰 & 102402127 金若曦</p>
+  </footer>
+
+  <script src="js/core.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
