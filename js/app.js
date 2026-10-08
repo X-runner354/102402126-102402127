@@ -402,8 +402,27 @@
     if (state.currentUser) pub.value = state.currentUser;
     fillSelects();
     bindEvents();
+
+    var params = new URLSearchParams(location.search);
+    var q = params.get('q');
+    if (q) {
+      state.keyword = q;
+      document.getElementById('search-input').value = q;
+    }
     renderHome();
-    switchView('home');
+
+    var route = location.hash.replace('#', '');
+    if (route === 'publish') {
+      switchView('publish');
+    } else if (route === 'mine') {
+      renderMine(state.currentUser || (state.items[0] ? state.items[0].publisher : ''));
+      switchView('mine');
+    } else if (route === 'detail') {
+      if (state.items[0]) renderDetail(state.items[0].id);
+      else switchView('home');
+    } else {
+      switchView('home');
+    }
   }
 
   document.addEventListener('DOMContentLoaded', init);
